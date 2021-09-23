@@ -73,6 +73,11 @@ namespace Our.Umbraco.DocTypeGridEditor.Helpers
 
                         var newValue = propEditor.ValueEditor.ConvertEditorToDb(contentPropData, jProp.Value);
 
+                        if (propEditor.Alias == "Umbraco.Tags")
+                        {
+                            newValue = JsonConvert.SerializeObject(newValue);
+                        }
+
                         /* Now that we have the DB stored value, we actually need to then convert it into its
                          * XML serialized state as expected by the published property by calling ConvertDbToString
                          */
